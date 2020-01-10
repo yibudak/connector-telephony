@@ -1,1 +1,4 @@
+connector
+queue
 server-tools
+web
