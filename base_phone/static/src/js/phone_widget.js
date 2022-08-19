@@ -48,6 +48,7 @@ odoo.define('base_phone.updatedphone_widget', function (require) {
             var phone_num = this.value;
             dial.click(function(evt) {
                 self.click2dial(phone_num);
+                return false;
             });
         },
         click2dial: function(phone_num) {
@@ -87,6 +88,7 @@ odoo.define('base_phone.updatedphone_widget', function (require) {
                         return self.do_action(action);
                     }
                 }
+                return true;
             }, function (r) {
                 console.log('on error');
                 self.do_warn("Click2dial failed");
