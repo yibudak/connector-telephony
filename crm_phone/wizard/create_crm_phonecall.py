@@ -33,10 +33,12 @@ class WizardCreateCrmPhonecall(models.TransientModel):
         if self.env.context.get('click2dial_model') == 'res.partner':
             partner_id = self.env.context.get('click2dial_id')
             action_ctx['default_partner_id'] = partner_id
+            country_code = self.env["res.partner"].browse(partner_id).country_id.code or "TR"
         elif self.env.context.get('click2dial_model') == 'crm.lead':
             lead_id = self.env.context.get('click2dial_id')
             action_ctx['default_opportunity_id'] = lead_id
-        parsed_num = phonenumbers.parse(self.env.context.get('phone_number'))
+            country_code = self.env["crm.lead"].browse(lead_id).country_id.code or "TR"
+        parsed_num = phonenumbers.parse(self.env.context.get('phone_number'), country_code)
         number_type = phonenumbers.number_type(parsed_num)
         if number_type == 1:
             action_ctx['default_partner_mobile'] =\
