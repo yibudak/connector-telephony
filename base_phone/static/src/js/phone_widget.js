@@ -34,7 +34,7 @@ odoo.define('base_phone.updatedphone_widget', function (require) {
             var self = this;
 
             // create our link
-            var dial = $('<a href="#" class="dial"><div class="label label-primary">☎ Dial</div></a>');
+            var dial = $('<a href="#" class="dial"><div class="label label-primary">☎ Ara</div></a>');
 
             // add a parent element
             // it's not possible to append to $el directly
